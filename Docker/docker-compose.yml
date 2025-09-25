@@ -1,8 +1,10 @@
 services:
   app:
-    build: .
+    build: 
+      context: ..
+      dockerfile: Docker/Dockerfile
     ports:
-      - "8083:80"
+      - "8084:80"
     depends_on:
       - sqlserver
     environment:
@@ -10,6 +12,7 @@ services:
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=PositiveStudentManagement;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true;
     networks:
       - app-network
+    restart: unless-stopped
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -17,12 +20,13 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong@Passw0rd
     ports:
-      - "1435:1433"
+      - "1436:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
-      - ./init-database.sql:/docker-entrypoint-initdb.d/init-database.sql
+      - ../Database/Scripts:/docker-entrypoint-initdb.d
     networks:
       - app-network
+    restart: unless-stopped
 
 volumes:
   sqlserver_data:

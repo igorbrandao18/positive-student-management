@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PositiveStudentManagement.Data;
 using PositiveStudentManagement.Models;
+using PositiveStudentManagement.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddControllersWithViews();
 // Add Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Application Services
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 var app = builder.Build();
 

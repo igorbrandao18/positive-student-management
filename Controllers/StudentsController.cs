@@ -2,22 +2,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PositiveStudentManagement.Data;
 using PositiveStudentManagement.Models;
+using PositiveStudentManagement.Services;
+using PositiveStudentManagement.ViewModels;
 
 namespace PositiveStudentManagement.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IStudentService _studentService;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
 
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Students.ToListAsync());
+            return View(await _studentService.GetAllStudentsAsync());
         }
 
         // GET: Students/Details/5
@@ -28,8 +30,7 @@ namespace PositiveStudentManagement.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var student = await _studentService.GetStudentByIdAsync(id.Value);
             if (student == null)
             {
                 return NotFound();
@@ -51,23 +52,14 @@ namespace PositiveStudentManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Generate student ID automatically
-                var lastStudent = await _context.Students.OrderByDescending(s => s.Id).FirstOrDefaultAsync();
-                var nextNumber = lastStudent?.Id + 1 ?? 1;
-                student.StudentId = $"STU{nextNumber:D6}";
-
-                // Calculate education level automatically
-                student.CalculateEducationLevel();
-
                 // Validate age vs grade
-                if (!student.ValidateAgeGrade())
+                if (!await _studentService.ValidateAgeGradeAsync(student))
                 {
                     ModelState.AddModelError("Grade", $"The student's age ({student.Age} years) does not match the selected grade.");
                     return View(student);
                 }
 
-                _context.Add(student);
-                await _context.SaveChangesAsync();
+                await _studentService.CreateStudentAsync(student);
                 return RedirectToAction(nameof(Index));
             }
             return View(student);
@@ -81,7 +73,7 @@ namespace PositiveStudentManagement.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
+            var student = await _studentService.GetStudentByIdAsync(id.Value);
             if (student == null)
             {
                 return NotFound();
@@ -103,22 +95,18 @@ namespace PositiveStudentManagement.Controllers
             {
                 try
                 {
-                    // Calculate education level automatically
-                    student.CalculateEducationLevel();
-
                     // Validate age vs grade
-                    if (!student.ValidateAgeGrade())
+                    if (!await _studentService.ValidateAgeGradeAsync(student))
                     {
                         ModelState.AddModelError("Grade", $"The student's age ({student.Age} years) does not match the selected grade.");
                         return View(student);
                     }
 
-                    _context.Update(student);
-                    await _context.SaveChangesAsync();
+                    await _studentService.UpdateStudentAsync(student);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.Id))
+                    if (await _studentService.GetStudentByIdAsync(student.Id) == null)
                     {
                         return NotFound();
                     }
@@ -140,8 +128,7 @@ namespace PositiveStudentManagement.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var student = await _studentService.GetStudentByIdAsync(id.Value);
             if (student == null)
             {
                 return NotFound();
@@ -155,13 +142,12 @@ namespace PositiveStudentManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-            if (student != null)
+            var success = await _studentService.DeleteStudentAsync(id);
+            if (!success)
             {
-                _context.Students.Remove(student);
+                return NotFound();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -170,51 +156,15 @@ namespace PositiveStudentManagement.Controllers
         {
             var reports = new ReportsViewModel
             {
-                TotalStudents = await _context.Students.CountAsync(),
-                StudentsByGrade = await _context.Students
-                    .GroupBy(s => s.Grade)
-                    .Select(g => new { Grade = g.Key, Total = g.Count() })
-                    .Cast<dynamic>()
-                    .ToListAsync(),
-                StudentsByEducationLevel = await _context.Students
-                    .GroupBy(s => s.EducationLevel)
-                    .Select(g => new { EducationLevel = g.Key, Total = g.Count() })
-                    .Cast<dynamic>()
-                    .ToListAsync(),
-                StudentsBetween4And8Years = await _context.Students
-                    .Where(s => EF.Functions.DateDiffYear(s.DateOfBirth, DateTime.Now) >= 4 && 
-                               EF.Functions.DateDiffYear(s.DateOfBirth, DateTime.Now) <= 8)
-                    .Select(s => new { FullName = s.FullName, Age = s.Age, EducationLevel = s.EducationLevel })
-                    .Cast<dynamic>()
-                    .ToListAsync(),
-                Siblings = await _context.Students
-                    .GroupBy(s => new { s.FatherName, s.MotherName })
-                    .Where(g => g.Count() > 1)
-                    .Select(g => new { 
-                        FatherName = g.Key.FatherName, 
-                        MotherName = g.Key.MotherName, 
-                        Count = g.Count(),
-                        Students = g.Select(s => s.FullName).ToList()
-                    })
-                    .Cast<dynamic>()
-                    .ToListAsync()
+                TotalStudents = await _studentService.GetTotalStudentsCountAsync(),
+                StudentsByGrade = await _studentService.GetStudentsByGradeAsync(),
+                StudentsByEducationLevel = await _studentService.GetStudentsByEducationLevelAsync(),
+                StudentsBetween4And8Years = await _studentService.GetStudentsBetween4And8YearsAsync(),
+                Siblings = await _studentService.GetSiblingsAsync()
             };
 
             return View(reports);
         }
 
-        private bool StudentExists(int id)
-        {
-            return _context.Students.Any(e => e.Id == id);
-        }
-    }
-
-    public class ReportsViewModel
-    {
-        public int TotalStudents { get; set; }
-        public List<dynamic> StudentsByGrade { get; set; } = new();
-        public List<dynamic> StudentsByEducationLevel { get; set; } = new();
-        public List<dynamic> StudentsBetween4And8Years { get; set; } = new();
-        public List<dynamic> Siblings { get; set; } = new();
     }
 }

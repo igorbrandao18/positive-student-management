@@ -1,318 +1,295 @@
 # 🎓 Positive Student Management System
 
-## Revolutionary Educational Management Platform
+A **professional-grade** student management system built with **ASP.NET Core MVC**, featuring **clean architecture**, **modular design**, and **modern UI**.
 
-A complete CRUD system for student management, built with cutting-edge technology and following all mandatory challenge requirements with technical excellence.
+## ✨ Features
 
-![System Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
-![Technology](https://img.shields.io/badge/Technology-.NET%208%20MVC-blue)
-![Database](https://img.shields.io/badge/Database-SQL%20Server-red)
-![Frontend](https://img.shields.io/badge/Frontend-Revolutionary%20Design-purple)
+### 🏗️ **Architecture & Design**
+- **Clean Architecture**: Separation of concerns with Service Layer pattern
+- **Modular CSS**: Component-based styling system
+- **Dependency Injection**: Testable and maintainable code
+- **Repository Pattern**: Ready for data access abstraction
+- **FluentValidation**: Custom validation rules
 
-## 🚀 Features
+### 📚 **Student Management**
+- **Complete CRUD**: Create, Read, Update, Delete operations
+- **Auto ID Generation**: Sequential student ID with format `STU0000001`
+- **Age-Grade Validation**: Ensures student age matches selected grade
+- **Education Level**: Automatic calculation based on grade
+- **Address Management**: Multiple address types (Billing, Residential, Correspondence)
+- **Parent Tracking**: Father and mother information
 
-### ✅ Complete Challenge Compliance
-- **All mandatory fields implemented** with automatic validation
-- **Age vs Grade validation** ensuring educational data consistency
-- **Automatic Student ID generation** with sequential numbering
-- **Complete address management** with all required types
-- **Parent information tracking** for sibling identification
-- **All 5 required SQL queries** implemented with modern visualization
+### 📊 **Reporting & Analytics**
+- **Total Students Count**: Real-time statistics
+- **Students by Grade**: Distribution with percentages
+- **Students by Education Level**: Academic level breakdown
+- **Age Range Analysis**: Students between 4-8 years
+- **Siblings Identification**: Grouped by parent information
 
-### 🎨 Revolutionary Frontend
-- **Modern glass morphism design** with advanced CSS
-- **Real-time form validation** with instant feedback
-- **Interactive animations** and smooth transitions
-- **Responsive design** for all devices
-- **Performance monitoring** with Core Web Vitals
-- **Accessibility compliance** (WCAG 2.1)
-- **Dark/Light theme support** (coming soon)
-
-### ⚡ Advanced Technology Stack
-- **.NET 8 MVC** with Razor views
-- **Entity Framework Core** for data access
-- **SQL Server 2022** with optimized queries
-- **Docker containerization** for consistent deployment
-- **Modern JavaScript** with ES6+ features
-- **CSS Grid & Flexbox** for responsive layouts
-
-## 📋 Challenge Requirements Implementation
-
-### Mandatory Fields ✅
-- [x] **Student ID** - Auto-generated (STU000001, STU000002, etc.)
-- [x] **Full Name** - Required with validation
-- [x] **Date of Birth** - Required with age calculation
-- [x] **Address Type** - Billing, Residential, Correspondence
-- [x] **Complete Address** - Street, ZIP, Number, Complement
-- [x] **Grade** - G1-G3, 1st-12th Grade with age validation
-- [x] **Education Level** - Auto-calculated (Early Childhood, Elementary, Middle, High School)
-- [x] **Parents Names** - Father and Mother for sibling identification
-
-### Validations ✅
-- [x] **G1-G3**: Ages 3-5 years respectively
-- [x] **1st-5th Grade**: Ages 6-10 years respectively  
-- [x] **6th-9th Grade**: Ages 11-14 years respectively
-- [x] **10th-12th Grade**: Ages 15-17 years respectively
-- [x] **Real-time validation** with instant feedback
-- [x] **Form submission prevention** for invalid data
-
-### Required SQL Queries ✅
-1. **Total students registered** - `SELECT COUNT(*) FROM Students`
-2. **Total students by grade** - `GROUP BY Grade`
-3. **Total students by education level** - `GROUP BY EducationLevel`
-4. **Students between 4-8 years** - `WHERE DATEDIFF(YEAR, DateOfBirth, GETDATE()) BETWEEN 4 AND 8`
-5. **Sibling groups** - `GROUP BY FatherName, MotherName HAVING COUNT(*) > 1`
+### 🎨 **Modern UI/UX**
+- **Responsive Design**: Mobile-first approach
+- **Component-Based CSS**: Modular and maintainable styles
+- **Bootstrap 5**: Professional UI components
+- **Custom Design System**: Consistent colors, spacing, and typography
+- **Interactive Elements**: Hover effects and smooth transitions
 
 ## 🛠️ Technology Stack
 
-### Backend
-- **.NET 8** - Latest framework with performance improvements
-- **ASP.NET Core MVC** - Following challenge requirements exactly
-- **Entity Framework Core** - Advanced ORM with SQL Server provider
-- **Razor Views** - Server-side rendering as required
+### **Backend**
+- **ASP.NET Core 8.0**: Latest framework with performance improvements
+- **Entity Framework Core**: ORM with code-first approach
+- **SQL Server**: Enterprise-grade database
+- **FluentValidation**: Advanced validation framework
+- **Dependency Injection**: Built-in IoC container
 
-### Database
-- **SQL Server 2022** - Latest version with advanced features
-- **Optimized indexes** for performance
-- **Sample data** for immediate testing
-- **Stored procedures** for complex queries
+### **Frontend**
+- **Razor Pages**: Server-side rendering
+- **Bootstrap 5**: CSS framework
+- **Custom CSS Architecture**: Modular component system
+- **Responsive Design**: Mobile and desktop optimized
 
-### Frontend
-- **Modern CSS** with CSS Grid and Flexbox
-- **Advanced JavaScript** with ES6+ features
-- **Responsive design** for all screen sizes
-- **Performance optimization** with lazy loading
-- **Accessibility features** for inclusive design
-
-### DevOps
-- **Docker** - Containerization for consistent deployment
-- **Docker Compose** - Multi-container orchestration
-- **Multi-stage builds** for optimized images
-- **Volume persistence** for database data
+### **DevOps**
+- **Docker**: Containerization
+- **Docker Compose**: Multi-container orchestration
+- **Git**: Version control
+- **GitHub**: Repository hosting
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Docker Desktop installed and running
-- Git for cloning the repository
+### **Prerequisites**
+- Docker Desktop
+- Git
 
-### Installation
+### **Running with Docker**
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/igorbrandao18/positive-student-management.git
    cd positive-student-management
    ```
 
-2. **Start the application**
+2. **Run with Docker Compose**
    ```bash
+   cd Docker
    docker-compose up --build
    ```
 
 3. **Access the application**
-   - Open your browser and navigate to: `http://localhost:8080`
-   - The application will be ready in a few moments
+   - **Application**: http://localhost:8083
+   - **Database**: localhost:1435
 
-### First Steps
-1. **View the dashboard** - See the revolutionary interface
-2. **Register a student** - Click "Add New Student" to test the form
-3. **View reports** - Check the advanced analytics and SQL queries
-4. **Explore features** - Test all CRUD operations
-
-## 📊 System Architecture
+## 📁 Project Structure
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   Database      │
-│   (Razor Views) │◄──►│   (.NET MVC)    │◄──►│   (SQL Server)  │
-│                 │    │                 │    │                 │
-│ • Modern CSS    │    │ • Controllers   │    │ • Students Table│
-│ • JavaScript    │    │ • Models        │    │ • Indexes       │
-│ • Responsive    │    │ • Validation    │    │ • Sample Data   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+PositiveStudentManagement/
+├── Controllers/           # MVC Controllers (thin layer)
+├── Services/             # Business Logic Layer
+│   ├── IStudentService.cs
+│   └── StudentService.cs
+├── ViewModels/           # View-Specific Models
+│   ├── ReportsViewModel.cs
+│   └── StudentFormViewModel.cs
+├── Models/               # Domain Models
+│   └── Student.cs
+├── Data/                 # Entity Framework Context
+│   └── ApplicationDbContext.cs
+├── Validators/           # FluentValidation Rules
+│   └── StudentValidator.cs
+├── Helpers/              # Utility Classes
+│   └── StudentHelper.cs
+├── Constants/            # Application Constants
+│   └── StudentConstants.cs
+├── Views/                # Razor Views
+│   ├── Shared/
+│   │   ├── _Layout.cshtml
+│   │   └── Partials/     # Reusable Components
+│   ├── Home/
+│   └── Students/
+├── wwwroot/              # Static Files
+│   ├── css/
+│   │   ├── components/   # Reusable CSS Components
+│   │   ├── pages/        # Page-Specific Styles
+│   │   ├── utilities/    # CSS Variables & Utilities
+│   │   └── main.css      # Main Import File
+│   └── js/
+├── Database/             # Database Scripts
+│   └── Scripts/
+├── Docker/               # Container Configuration
+│   ├── Dockerfile
+│   └── docker-compose.yml
+└── Docs/                 # Documentation
+    └── ARCHITECTURE.md
 ```
 
-## 🎯 Key Features
+## 🎯 Architecture Benefits
 
-### Student Management
-- **Complete CRUD operations** for student data
-- **Automatic ID generation** with sequential numbering
-- **Real-time validation** preventing invalid submissions
-- **Age vs Grade validation** ensuring data consistency
-- **Address management** with multiple types
-- **Parent tracking** for family relationships
+### **Separation of Concerns**
+- **Controllers**: Handle HTTP requests/responses only
+- **Services**: Contain business logic
+- **Models**: Domain entities with validation
+- **ViewModels**: View-specific data transfer objects
 
-### Reports & Analytics
-- **Interactive dashboards** with modern visualizations
-- **All required SQL queries** implemented
-- **Real-time statistics** and metrics
-- **Export functionality** for reports
-- **Print-friendly** layouts
+### **Maintainability**
+- **Modular CSS**: Easy to locate and modify styles
+- **Service Layer**: Reusable business logic
+- **Constants**: Centralized configuration
+- **Helpers**: Utility functions
 
-### User Experience
-- **Revolutionary design** with glass morphism effects
-- **Smooth animations** and transitions
-- **Responsive layout** for all devices
-- **Performance monitoring** with Core Web Vitals
-- **Accessibility compliance** for inclusive design
+### **Testability**
+- **Dependency Injection**: Easy to mock dependencies
+- **Service Interfaces**: Contract-based testing
+- **Separation**: Each layer can be tested independently
 
-## 🔧 Development
+### **Scalability**
+- **Repository Pattern**: Ready for data access abstraction
+- **Service Layer**: Easy to add new business logic
+- **Modular Design**: Components can be extended independently
 
-### Project Structure
-```
-positive-student-management/
-├── Controllers/          # MVC Controllers
-├── Models/              # Data Models
-├── Views/               # Razor Views
-├── Data/                # Database Context
-├── wwwroot/             # Static Files
-│   ├── css/            # Stylesheets
-│   └── js/             # JavaScript
-├── Dockerfile          # Container Configuration
-├── docker-compose.yml  # Orchestration
-└── init-database.sql   # Database Setup
-```
+## 📊 Student Model
 
-### Database Schema
-```sql
-Students Table:
-├── Id (Primary Key)
-├── StudentId (Auto-generated)
-├── FullName
-├── DateOfBirth
-├── AddressType (Enum)
-├── Street, ZipCode, Number, Complement
-├── Grade
-├── EducationLevel (Auto-calculated)
-├── FatherName, MotherName
-```
+### **Personal Information**
+- **Full Name**: Required, 2-100 characters
+- **Date of Birth**: Required, must be in the past
+- **Age**: Calculated automatically
+- **Student ID**: Auto-generated (`STU0000001` format)
 
-## 📈 Performance Features
+### **Academic Information**
+- **Grade**: Required, from G1 to 12th Grade
+- **Education Level**: Computed automatically
+  - **Infant**: G1, G2, G3 (3-5 years)
+  - **Early Years**: 1st-5th Grade (6-10 years)
+  - **Later Years**: 6th-9th Grade (11-14 years)
+  - **High School**: 10th-12th Grade (15-17 years)
 
-- **Optimized SQL queries** with proper indexing
-- **Lazy loading** for images and resources
-- **Compressed responses** for faster loading
-- **Service worker** for offline capabilities
-- **Core Web Vitals monitoring** for performance tracking
+### **Address Information**
+- **Address Type**: Billing, Residential, or Correspondence
+- **Street**: Required, max 150 characters
+- **Number**: Required, max 20 characters
+- **ZIP Code**: Required, max 10 characters
+- **Complement**: Optional, max 100 characters
 
-## 🔒 Security Features
+### **Family Information**
+- **Father's Name**: Required, 2-100 characters
+- **Mother's Name**: Required, 2-100 characters
 
-- **Input validation** on both client and server
-- **SQL injection prevention** with parameterized queries
-- **XSS protection** with proper encoding
-- **CSRF protection** with anti-forgery tokens
-- **Secure headers** for enhanced security
+## ✅ Validation Rules
 
-## 🌟 Advanced Features
+### **Business Rules**
+- **Age vs Grade**: Automatic validation ensures age matches grade
+- **Required Fields**: All mandatory fields validated
+- **Data Integrity**: Database constraints and business rules
+- **Format Validation**: Names, addresses, ZIP codes
 
-### Real-time Validation
-- **Instant feedback** as users type
-- **Age vs Grade validation** with visual indicators
-- **Form submission prevention** for invalid data
-- **Custom error messages** for better UX
+### **Custom Validation**
+- **FluentValidation**: Advanced validation framework
+- **Custom Rules**: Age-grade compatibility
+- **Error Messages**: User-friendly validation messages
+- **Server & Client**: Both server and client-side validation
 
-### Modern UI/UX
-- **Glass morphism design** with backdrop filters
-- **Smooth animations** using CSS transitions
-- **Interactive elements** with hover effects
-- **Responsive grid layouts** for all screen sizes
+## 📈 Reports Available
 
-### Performance Optimization
-- **Lazy loading** for images and content
-- **Optimized CSS** with modern properties
-- **Minified JavaScript** for faster loading
-- **Service worker** for caching strategies
+1. **Total Students Count**: Real-time statistics
+2. **Students by Grade**: Distribution with percentages
+3. **Students by Education Level**: Academic level breakdown
+4. **Students Between 4-8 Years**: Detailed age analysis
+5. **Siblings Identification**: Grouped by parent information
 
-## 📱 Responsive Design
+## 🔗 API Endpoints
 
-The application is fully responsive and optimized for:
-- **Desktop** (1200px+)
-- **Tablet** (768px - 1199px)
-- **Mobile** (320px - 767px)
-
-## 🎨 Design System
-
-### Color Palette
-- **Primary**: #667eea (Positive Blue)
-- **Secondary**: #764ba2 (Positive Purple)
-- **Success**: #10b981 (Positive Green)
-- **Warning**: #f59e0b (Positive Orange)
-- **Error**: #ef4444 (Positive Red)
-
-### Typography
-- **Font Family**: Inter (Google Fonts)
-- **Weights**: 300, 400, 500, 600, 700, 800, 900
-- **Responsive scaling** for all screen sizes
-
-## 🚀 Deployment
-
-### Docker Deployment
-```bash
-# Build and start containers
-docker-compose up --build -d
-
-# View logs
-docker-compose logs -f
-
-# Stop containers
-docker-compose down
-```
-
-### Production Considerations
-- **Environment variables** for configuration
-- **SSL certificates** for HTTPS
-- **Database backups** for data protection
-- **Monitoring** for system health
-
-## 📚 Documentation
-
-### API Endpoints
-- `GET /` - Home dashboard
-- `GET /Students` - Student list
-- `GET /Students/Create` - Create form
+### **Student Management**
+- `GET /` - Home page with statistics
+- `GET /Students` - List all students
+- `GET /Students/Create` - Create new student form
 - `POST /Students/Create` - Create student
-- `GET /Students/Edit/{id}` - Edit form
+- `GET /Students/Edit/{id}` - Edit student form
 - `POST /Students/Edit/{id}` - Update student
 - `GET /Students/Details/{id}` - Student details
 - `GET /Students/Delete/{id}` - Delete confirmation
 - `POST /Students/Delete/{id}` - Delete student
-- `GET /Students/Reports` - Analytics dashboard
+- `GET /Students/Reports` - Reports and analytics
 
-### Database Queries
-All required SQL queries are implemented and documented in `required-sql-queries.sql`.
+## 🛠️ Development
+
+### **Local Development**
+
+1. **Install .NET 8.0 SDK**
+2. **Install SQL Server**
+3. **Update connection string** in `appsettings.json`
+4. **Run the application**
+   ```bash
+   dotnet run
+   ```
+
+### **Database Setup**
+
+The application automatically creates the database and seeds initial data on first run.
+
+### **Adding New Features**
+
+1. **Create Service Interface** in `Services/`
+2. **Implement Service** with business logic
+3. **Register Service** in `Program.cs`
+4. **Update Controller** to use service
+5. **Add Validation** if needed
+6. **Create ViewModels** for complex views
+
+## 🧪 Testing Strategy
+
+### **Unit Tests** (Future)
+- **Service Layer**: Business logic testing
+- **Validators**: Validation rule testing
+- **Helpers**: Utility method testing
+
+### **Integration Tests** (Future)
+- **Controllers**: End-to-end testing
+- **Database**: Data access testing
+- **API**: HTTP endpoint testing
+
+## 🚀 Deployment
+
+### **Docker**
+- **Multi-stage builds**: Optimized images
+- **Environment variables**: Configuration management
+- **Health checks**: Container monitoring
+- **Volume mounts**: Data persistence
+
+### **Production Considerations**
+- **Environment-specific configs**: `appsettings.Production.json`
+- **Logging**: Structured logging
+- **Monitoring**: Application insights
+- **Scaling**: Horizontal scaling ready
+
+## 📚 Documentation
+
+- **[Architecture Documentation](Docs/ARCHITECTURE.md)**: Detailed technical documentation
+- **Code Comments**: Comprehensive inline documentation
+- **API Documentation**: Endpoint specifications
 
 ## 🤝 Contributing
 
-This is a challenge implementation, but contributions are welcome for:
-- **Bug fixes** and improvements
-- **Performance optimizations**
-- **Additional features**
-- **Documentation improvements**
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-This project is created for the Positive Technology challenge and follows all specified requirements.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🏆 Challenge Compliance
+## 👥 Team
 
-### ✅ All Requirements Met
-- [x] **.NET C# MVC with Razor** - Exactly as specified
-- [x] **SQL Server database** - Latest version with optimization
-- [x] **All mandatory fields** - Complete implementation
-- [x] **Age vs Grade validation** - Real-time validation
-- [x] **All 5 SQL queries** - Implemented with visualization
-- [x] **CRUD operations** - Complete functionality
-- [x] **Docker deployment** - Ready for production
+- **Developer**: Igor Brandão
+- **Email**: igorbrandao18@gmail.com
+- **GitHub**: [@igorbrandao18](https://github.com/igorbrandao18)
 
-### 🎯 Bonus Features
-- **Revolutionary frontend design** beyond requirements
-- **Performance optimization** with modern techniques
-- **Accessibility compliance** for inclusive design
-- **Advanced animations** and interactions
-- **Real-time validation** with instant feedback
+## 🙏 Acknowledgments
+
+- **ASP.NET Core Team**: For the amazing framework
+- **Bootstrap Team**: For the CSS framework
+- **Entity Framework Team**: For the ORM
+- **Docker Team**: For containerization technology
 
 ---
 
-**Developed with ❤️ for Positive Technology Challenge**
-
-*Revolutionary Student Management System - Where Technology Meets Education*
+**Built with ❤️ using ASP.NET Core MVC**

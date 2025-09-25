@@ -1,4 +1,4 @@
-@model PositiveStudentManagement.Controllers.ReportsViewModel
+@model PositiveStudentManagement.ViewModels.ReportsViewModel
 
 @{
     ViewData["Title"] = "Reports";
@@ -20,7 +20,7 @@
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Different Grades</h5>
-                <h2 class="text-info">@Model.StudentsByGrade.Count</h2>
+                <h2 class="text-info">@Model.StudentsByGrade.Count()</h2>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Education Levels</h5>
-                <h2 class="text-success">@Model.StudentsByEducationLevel.Count</h2>
+                <h2 class="text-success">@Model.StudentsByEducationLevel.Count()</h2>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Sibling Groups</h5>
-                <h2 class="text-warning">@Model.Siblings.Count</h2>
+                <h2 class="text-warning">@Model.Siblings.Count()</h2>
             </div>
         </div>
     </div>

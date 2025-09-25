@@ -1,21 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PositiveStudentManagement.Data;
+using PositiveStudentManagement.Services;
 
 namespace PositiveStudentManagement.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IStudentService _studentService;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.TotalStudents = await _context.Students.CountAsync();
+            ViewBag.TotalStudents = await _studentService.GetTotalStudentsCountAsync();
             return View();
         }
 
