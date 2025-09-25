@@ -1,0 +1,89 @@
+@model PositiveStudentManagement.Models.Student
+
+<div class="student-details-card">
+    <div class="student-details-header">
+        <h3 class="student-details-title">
+            <span class="form-section-icon">👤</span>
+            Personal Information
+        </h3>
+    </div>
+    <div class="student-details-body">
+        <div class="detail-item">
+            <span class="detail-label">Student ID</span>
+            <span class="student-id-badge">@Model.StudentId</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Full Name</span>
+            <span class="detail-value">@Model.FullName</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Date of Birth</span>
+            <span class="detail-value">@Model.DateOfBirth.ToString("MMMM dd, yyyy")</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Age</span>
+            <span class="age-badge age-@(Model.Age < 6 ? "early" : Model.Age < 12 ? "elementary" : Model.Age < 15 ? "middle" : "high")">@Model.Age years old</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Grade</span>
+            <span class="grade-badge">@Model.Grade</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Education Level</span>
+            <span class="detail-value">@Model.EducationLevel</span>
+        </div>
+    </div>
+</div>
+
+<div class="student-details-card">
+    <div class="student-details-header">
+        <h3 class="student-details-title">
+            <span class="form-section-icon">🏠</span>
+            Address Information
+        </h3>
+    </div>
+    <div class="student-details-body">
+        <div class="detail-item">
+            <span class="detail-label">Address Type</span>
+            <span class="badge badge-warning">@Model.AddressType</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Street</span>
+            <span class="detail-value">@Model.Street</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Number</span>
+            <span class="detail-value">@Model.Number</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">ZIP Code</span>
+            <span class="detail-value">@Model.ZipCode</span>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Complement))
+        {
+            <div class="detail-item">
+                <span class="detail-label">Complement</span>
+                <span class="detail-value">@Model.Complement</span>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="student-details-card">
+    <div class="student-details-header">
+        <h3 class="student-details-title">
+            <span class="form-section-icon">👨‍👩‍👧‍👦</span>
+            Parents Information
+        </h3>
+    </div>
+    <div class="student-details-body">
+        <div class="detail-item">
+            <span class="detail-label">Father's Name</span>
+            <span class="detail-value">@Model.FatherName</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Mother's Name</span>
+            <span class="detail-value">@Model.MotherName</span>
+        </div>
+    </div>
+</div>

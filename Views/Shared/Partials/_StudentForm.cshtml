@@ -1,0 +1,162 @@
+@model PositiveStudentManagement.Models.Student
+
+<div class="student-form-container">
+    <div class="student-form-header">
+        <h2 class="student-form-title">@ViewBag.FormTitle</h2>
+        @if (!string.IsNullOrEmpty(ViewBag.FormSubtitle as string))
+        {
+            <p class="student-form-subtitle">@ViewBag.FormSubtitle</p>
+        }
+    </div>
+
+    <form asp-action="@ViewBag.FormAction" method="post">
+        @if (ViewBag.FormAction == "Edit")
+        {
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="StudentId" type="hidden" />
+        }
+        
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        
+        <!-- Personal Information Section -->
+        <div class="form-section">
+            <h3 class="form-section-title">
+                <span class="form-section-icon">👤</span>
+                Personal Information
+            </h3>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="FullName" class="form-label-custom">Full Name *</label>
+                    <input asp-for="FullName" class="form-control-custom" placeholder="Enter student's full name" />
+                    <span asp-validation-for="FullName" class="invalid-feedback"></span>
+                </div>
+                
+                <div class="form-group-custom">
+                    <label asp-for="DateOfBirth" class="form-label-custom">Date of Birth *</label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control-custom" />
+                    <span asp-validation-for="DateOfBirth" class="invalid-feedback"></span>
+                    <div class="form-text-custom">Age will be calculated automatically</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="Grade" class="form-label-custom">Grade *</label>
+                    <select asp-for="Grade" class="form-select-custom">
+                        <option value="">Select Grade</option>
+                        <optgroup label="Early Childhood">
+                            <option value="G1">G1 (3 years)</option>
+                            <option value="G2">G2 (4 years)</option>
+                            <option value="G3">G3 (5 years)</option>
+                        </optgroup>
+                        <optgroup label="Elementary School">
+                            <option value="1st Grade">1st Grade (6 years)</option>
+                            <option value="2nd Grade">2nd Grade (7 years)</option>
+                            <option value="3rd Grade">3rd Grade (8 years)</option>
+                            <option value="4th Grade">4th Grade (9 years)</option>
+                            <option value="5th Grade">5th Grade (10 years)</option>
+                        </optgroup>
+                        <optgroup label="Middle School">
+                            <option value="6th Grade">6th Grade (11 years)</option>
+                            <option value="7th Grade">7th Grade (12 years)</option>
+                            <option value="8th Grade">8th Grade (13 years)</option>
+                            <option value="9th Grade">9th Grade (14 years)</option>
+                        </optgroup>
+                        <optgroup label="High School">
+                            <option value="10th Grade">10th Grade (15 years)</option>
+                            <option value="11th Grade">11th Grade (16 years)</option>
+                            <option value="12th Grade">12th Grade (17 years)</option>
+                        </optgroup>
+                    </select>
+                    <span asp-validation-for="Grade" class="invalid-feedback"></span>
+                    <div class="form-text-custom">Education level will be calculated automatically</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Address Information Section -->
+        <div class="form-section">
+            <h3 class="form-section-title">
+                <span class="form-section-icon">🏠</span>
+                Address Information
+            </h3>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="AddressType" class="form-label-custom">Address Type *</label>
+                    <select asp-for="AddressType" class="form-select-custom">
+                        <option value="">Select Address Type</option>
+                        <option value="Billing">Billing</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Correspondence">Correspondence</option>
+                    </select>
+                    <span asp-validation-for="AddressType" class="invalid-feedback"></span>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="Street" class="form-label-custom">Street *</label>
+                    <input asp-for="Street" class="form-control-custom" placeholder="Enter street name" />
+                    <span asp-validation-for="Street" class="invalid-feedback"></span>
+                </div>
+                
+                <div class="form-group-custom">
+                    <label asp-for="Number" class="form-label-custom">Number *</label>
+                    <input asp-for="Number" class="form-control-custom" placeholder="Enter house/building number" />
+                    <span asp-validation-for="Number" class="invalid-feedback"></span>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="ZipCode" class="form-label-custom">ZIP Code *</label>
+                    <input asp-for="ZipCode" class="form-control-custom" placeholder="00000-000" />
+                    <span asp-validation-for="ZipCode" class="invalid-feedback"></span>
+                    <div class="form-text-custom">Format: 00000-000</div>
+                </div>
+                
+                <div class="form-group-custom">
+                    <label asp-for="Complement" class="form-label-custom">Complement</label>
+                    <input asp-for="Complement" class="form-control-custom" placeholder="Apartment, suite, unit, etc. (optional)" />
+                    <span asp-validation-for="Complement" class="invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Parents Information Section -->
+        <div class="form-section">
+            <h3 class="form-section-title">
+                <span class="form-section-icon">👨‍👩‍👧‍👦</span>
+                Parents Information
+            </h3>
+            
+            <div class="form-row">
+                <div class="form-group-custom">
+                    <label asp-for="FatherName" class="form-label-custom">Father's Name *</label>
+                    <input asp-for="FatherName" class="form-control-custom" placeholder="Enter father's full name" />
+                    <span asp-validation-for="FatherName" class="invalid-feedback"></span>
+                </div>
+                
+                <div class="form-group-custom">
+                    <label asp-for="MotherName" class="form-label-custom">Mother's Name *</label>
+                    <input asp-for="MotherName" class="form-control-custom" placeholder="Enter mother's full name" />
+                    <span asp-validation-for="MotherName" class="invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary-custom btn-lg-custom">
+                @ViewBag.SubmitButtonText
+            </button>
+            @if (ViewBag.FormAction == "Edit")
+            {
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-custom btn-lg-custom">View Details</a>
+            }
+            <a asp-action="Index" class="btn btn-secondary-custom btn-lg-custom">Back to List</a>
+        </div>
+    </form>
+</div>

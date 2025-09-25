@@ -4,92 +4,17 @@
     ViewData["Title"] = "Student Details";
 }
 
-<h2>Student Details</h2>
-<hr />
-
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Personal Information</h5>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-4">Student ID:</dt>
-                    <dd class="col-sm-8"><span class="badge bg-primary">@Model.StudentId</span></dd>
-                    
-                    <dt class="col-sm-4">Full Name:</dt>
-                    <dd class="col-sm-8">@Model.FullName</dd>
-                    
-                    <dt class="col-sm-4">Date of Birth:</dt>
-                    <dd class="col-sm-8">@Model.DateOfBirth.ToString("MMMM dd, yyyy")</dd>
-                    
-                    <dt class="col-sm-4">Age:</dt>
-                    <dd class="col-sm-8"><span class="badge bg-info">@Model.Age years old</span></dd>
-                    
-                    <dt class="col-sm-4">Grade:</dt>
-                    <dd class="col-sm-8"><span class="badge bg-secondary">@Model.Grade</span></dd>
-                    
-                    <dt class="col-sm-4">Education Level:</dt>
-                    <dd class="col-sm-8">@Model.EducationLevel</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Address Information</h5>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-4">Address Type:</dt>
-                    <dd class="col-sm-8"><span class="badge bg-warning">@Model.AddressType</span></dd>
-                    
-                    <dt class="col-sm-4">Street:</dt>
-                    <dd class="col-sm-8">@Model.Street</dd>
-                    
-                    <dt class="col-sm-4">Number:</dt>
-                    <dd class="col-sm-8">@Model.Number</dd>
-                    
-                    <dt class="col-sm-4">ZIP Code:</dt>
-                    <dd class="col-sm-8">@Model.ZipCode</dd>
-                    
-                    @if (!string.IsNullOrEmpty(Model.Complement))
-                    {
-                        <dt class="col-sm-4">Complement:</dt>
-                        <dd class="col-sm-8">@Model.Complement</dd>
-                    }
-                </dl>
-            </div>
-        </div>
+<div class="students-header">
+    <h2 class="students-title">Student Details</h2>
+    <div class="students-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-custom">Edit Student</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger-custom">Delete Student</a>
+        <a asp-action="Index" class="btn btn-secondary-custom">Back to List</a>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Parents Information</h5>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-4">Father's Name:</dt>
-                    <dd class="col-sm-8">@Model.FatherName</dd>
-                    
-                    <dt class="col-sm-4">Mother's Name:</dt>
-                    <dd class="col-sm-8">@Model.MotherName</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="mt-4">
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Student</a>
-    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete Student</a>
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+<div class="student-details-container">
+    @await Html.PartialAsync("Partials/_StudentCard", Model)
 </div>
 
 <style>
