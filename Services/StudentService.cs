@@ -7,15 +7,32 @@ namespace PositiveStudentManagement.Services
     public class StudentService : IStudentService
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILoggingService _loggingService;
+        private readonly ICacheService _cacheService;
 
-        public StudentService(ApplicationDbContext context)
+        public StudentService(ApplicationDbContext context, ILoggingService loggingService, ICacheService cacheService)
         {
             _context = context;
+            _loggingService = loggingService;
+            _cacheService = cacheService;
         }
 
         public async Task<IEnumerable<Student>> GetAllStudentsAsync()
         {
-            return await _context.Students.ToListAsync();
+            const string cacheKey = "students_all";
+            
+            var cachedStudents = await _cacheService.GetAsync<IEnumerable<Student>>(cacheKey);
+            if (cachedStudents != null)
+            {
+                _loggingService.LogDebug("Retrieved students from cache");
+                return cachedStudents;
+            }
+
+            var students = await _context.Students.ToListAsync();
+            await _cacheService.SetAsync(cacheKey, students, TimeSpan.FromMinutes(15));
+            
+            _loggingService.LogInformation("Retrieved {Count} students from database", students.Count);
+            return students;
         }
 
         public async Task<Student?> GetStudentByIdAsync(int id)
@@ -32,6 +49,12 @@ namespace PositiveStudentManagement.Services
 
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
+            
+            // Clear cache after creating new student
+            await _cacheService.RemoveAsync("students_all");
+            await _cacheService.RemoveByPatternAsync("students_reports_*");
+            
+            _loggingService.LogStudentAction("CREATE", student.Id, student.FullName);
             return student;
         }
 
