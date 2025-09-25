@@ -1,0 +1,210 @@
+@model PositiveStudentManagement.Controllers.ReportsViewModel
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h2>Student Reports</h2>
+<hr />
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Total Students</h5>
+                <h2 class="text-primary">@Model.TotalStudents</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Different Grades</h5>
+                <h2 class="text-info">@Model.StudentsByGrade.Count</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Education Levels</h5>
+                <h2 class="text-success">@Model.StudentsByEducationLevel.Count</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Sibling Groups</h5>
+                <h2 class="text-warning">@Model.Siblings.Count</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Students by Grade</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.StudentsByGrade.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (dynamic item in Model.StudentsByGrade)
+                                {
+                                    <tr>
+                                        <td><span class="badge bg-secondary">@item.Grade</span></td>
+                                        <td><span class="badge bg-primary">@item.Total</span></td>
+                                        <td>@((double)item.Total / Model.TotalStudents * 100).ToString("F1")%</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No grade data available</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Students by Education Level</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.StudentsByEducationLevel.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Education Level</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (dynamic item in Model.StudentsByEducationLevel)
+                                {
+                                    <tr>
+                                        <td><span class="badge bg-success">@item.EducationLevel</span></td>
+                                        <td><span class="badge bg-primary">@item.Total</span></td>
+                                        <td>@((double)item.Total / Model.TotalStudents * 100).ToString("F1")%</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No education level data available</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Students Between 4-8 Years</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.StudentsBetween4And8Years.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Age</th>
+                                    <th>Education Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (dynamic student in Model.StudentsBetween4And8Years)
+                                {
+                                    <tr>
+                                        <td><strong>@student.FullName</strong></td>
+                                        <td><span class="badge bg-info">@student.Age years</span></td>
+                                        <td><span class="badge bg-warning">@student.EducationLevel</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No students in this age range</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Siblings Identification</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Siblings.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Father's Name</th>
+                                    <th>Mother's Name</th>
+                                    <th>Count</th>
+                                    <th>Students</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (dynamic siblingGroup in Model.Siblings)
+                                {
+                                    <tr>
+                                        <td><strong>@siblingGroup.FatherName</strong></td>
+                                        <td><strong>@siblingGroup.MotherName</strong></td>
+                                        <td><span class="badge bg-warning">@siblingGroup.Count</span></td>
+                                        <td>
+                                            @foreach (string studentName in siblingGroup.Students)
+                                            {
+                                                <span class="badge bg-light text-dark me-1">@studentName</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No sibling groups found</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to Students</a>
+</div>

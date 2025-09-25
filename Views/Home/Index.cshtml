@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Student Management System</h1>
+    <p class="lead">Complete CRUD system for student registration and management.</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <h2 class="text-primary">@ViewBag.TotalStudents</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">System Status</h5>
+                    <h2 class="text-success">Online</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Features</h5>
+                    <h2 class="text-info">Complete</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-5">
+        <a href="/Students" class="btn btn-primary btn-lg me-3">Manage Students</a>
+        <a href="/Students/Reports" class="btn btn-outline-primary btn-lg">View Reports</a>
+    </div>
+</div>
