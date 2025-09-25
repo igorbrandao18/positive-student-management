@@ -79,8 +79,8 @@ A **professional-grade** student management system built with **ASP.NET Core MVC
    ```
 
 3. **Access the application**
-   - **Application**: http://localhost:8083
-   - **Database**: localhost:1435
+   - **Application**: http://localhost:8084
+   - **Database**: localhost:1436
 
 ## 📁 Project Structure
 
@@ -117,12 +117,17 @@ PositiveStudentManagement/
 │   │   └── main.css      # Main Import File
 │   └── js/
 ├── Database/             # Database Scripts
-│   └── Scripts/
+│   ├── Migrations/       # EF Migrations
+│   └── Scripts/          # SQL Scripts
 ├── Docker/               # Container Configuration
 │   ├── Dockerfile
 │   └── docker-compose.yml
-└── Docs/                 # Documentation
-    └── ARCHITECTURE.md
+├── Docs/                 # Documentation
+│   ├── API.md
+│   └── ARCHITECTURE.md
+├── .gitignore           # Git ignore rules
+├── LICENSE.md           # MIT License
+└── env.example          # Environment variables example
 ```
 
 ## 🎯 Architecture Benefits
