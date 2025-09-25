@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PositiveStudentManagement.Data;
 using PositiveStudentManagement.Services;
+using PositiveStudentManagement.Scripts;
 
 namespace PositiveStudentManagement.Controllers
 {
@@ -23,6 +24,23 @@ namespace PositiveStudentManagement.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SeedStudents()
+        {
+            try
+            {
+                // This is a simple way to seed data - in production you'd want a more secure approach
+                await PositiveStudentManagement.Scripts.SeedStudents.SeedDataAsync(HttpContext.RequestServices.GetRequiredService<ApplicationDbContext>());
+                TempData["SuccessMessage"] = "Students seeded successfully!";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Error seeding students: {ex.Message}";
+            }
+            
+            return RedirectToAction("Index");
         }
     }
 }

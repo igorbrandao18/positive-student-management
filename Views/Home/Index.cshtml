@@ -35,6 +35,29 @@
     
     <div class="mt-5">
         <a href="/Students" class="btn btn-primary btn-lg me-3">Manage Students</a>
-        <a href="/Students/Reports" class="btn btn-outline-primary btn-lg">View Reports</a>
+        <a href="/Students/Reports" class="btn btn-outline-primary btn-lg me-3">View Reports</a>
+        
+        @if (ViewBag.TotalStudents == 0)
+        {
+            <form method="post" action="/Home/SeedStudents" class="d-inline">
+                <button type="submit" class="btn btn-success btn-lg" onclick="return confirm('This will add 20 sample students to the database. Continue?')">
+                    Add Sample Students
+                </button>
+            </form>
+        }
     </div>
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success mt-3" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
 </div>
