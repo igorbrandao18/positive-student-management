@@ -79,11 +79,11 @@ namespace PositiveStudentManagement.Models
         {
             EducationLevel = Grade switch
             {
-                "G1" or "G2" or "G3" => "Early Childhood",
-                "1st Grade" or "2nd Grade" or "3rd Grade" or "4th Grade" or "5th Grade" => "Elementary School",
-                "6th Grade" or "7th Grade" or "8th Grade" or "9th Grade" => "Middle School",
-                "10th Grade" or "11th Grade" or "12th Grade" => "High School",
-                _ => "Not Defined"
+                "G1" or "G2" or "G3" => "Infantil",
+                "1º ano" or "2º ano" or "3º ano" or "4º ano" or "5º ano" => "Anos iniciais",
+                "6º ano" or "7º ano" or "8º ano" or "9º ano" => "Anos finais",
+                "1º ano ensino médio" or "2º ano ensino médio" or "3º ano ensino médio" => "Ensino Médio",
+                _ => "Não definido"
             };
         }
 
@@ -94,18 +94,18 @@ namespace PositiveStudentManagement.Models
                 "G1" => Age == 3,
                 "G2" => Age == 4,
                 "G3" => Age == 5,
-                "1st Grade" => Age == 6,
-                "2nd Grade" => Age == 7,
-                "3rd Grade" => Age == 8,
-                "4th Grade" => Age == 9,
-                "5th Grade" => Age == 10,
-                "6th Grade" => Age == 11,
-                "7th Grade" => Age == 12,
-                "8th Grade" => Age == 13,
-                "9th Grade" => Age == 14,
-                "10th Grade" => Age == 15,
-                "11th Grade" => Age == 16,
-                "12th Grade" => Age == 17,
+                "1º ano" => Age == 6,
+                "2º ano" => Age == 7,
+                "3º ano" => Age == 8,
+                "4º ano" => Age == 9,
+                "5º ano" => Age == 10,
+                "6º ano" => Age == 11,
+                "7º ano" => Age == 12,
+                "8º ano" => Age == 13,
+                "9º ano" => Age == 14,
+                "1º ano ensino médio" => Age == 15,
+                "2º ano ensino médio" => Age == 16,
+                "3º ano ensino médio" => Age == 17,
                 _ => false
             };
         }
@@ -113,11 +113,11 @@ namespace PositiveStudentManagement.Models
 
     public enum AddressType
     {
-        [Display(Name = "Billing")]
+        [Display(Name = "Cobrança")]
         Billing,
-        [Display(Name = "Residential")]
+        [Display(Name = "Residencial")]
         Residential,
-        [Display(Name = "Correspondence")]
+        [Display(Name = "Correspondência")]
         Correspondence
     }
 }

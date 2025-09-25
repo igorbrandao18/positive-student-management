@@ -7,33 +7,33 @@ namespace PositiveStudentManagement.Constants
             public const string G1 = "G1";
             public const string G2 = "G2";
             public const string G3 = "G3";
-            public const string FirstGrade = "1st Grade";
-            public const string SecondGrade = "2nd Grade";
-            public const string ThirdGrade = "3rd Grade";
-            public const string FourthGrade = "4th Grade";
-            public const string FifthGrade = "5th Grade";
-            public const string SixthGrade = "6th Grade";
-            public const string SeventhGrade = "7th Grade";
-            public const string EighthGrade = "8th Grade";
-            public const string NinthGrade = "9th Grade";
-            public const string TenthGrade = "10th Grade";
-            public const string EleventhGrade = "11th Grade";
-            public const string TwelfthGrade = "12th Grade";
+            public const string FirstGrade = "1º ano";
+            public const string SecondGrade = "2º ano";
+            public const string ThirdGrade = "3º ano";
+            public const string FourthGrade = "4º ano";
+            public const string FifthGrade = "5º ano";
+            public const string SixthGrade = "6º ano";
+            public const string SeventhGrade = "7º ano";
+            public const string EighthGrade = "8º ano";
+            public const string NinthGrade = "9º ano";
+            public const string TenthGrade = "1º ano ensino médio";
+            public const string EleventhGrade = "2º ano ensino médio";
+            public const string TwelfthGrade = "3º ano ensino médio";
         }
 
         public static class EducationLevels
         {
-            public const string Infant = "Infant";
-            public const string EarlyYears = "Early Years";
-            public const string LaterYears = "Later Years";
-            public const string HighSchool = "High School";
+            public const string Infantil = "Infantil";
+            public const string AnosIniciais = "Anos iniciais";
+            public const string AnosFinais = "Anos finais";
+            public const string EnsinoMedio = "Ensino Médio";
         }
 
         public static class AddressTypes
         {
-            public const string Billing = "Billing";
-            public const string Residential = "Residential";
-            public const string Correspondence = "Correspondence";
+            public const string Cobranca = "Cobrança";
+            public const string Residencial = "Residencial";
+            public const string Correspondencia = "Correspondência";
         }
 
         public static class AgeRanges

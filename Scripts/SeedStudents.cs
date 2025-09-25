@@ -69,7 +69,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01302-000",
                     Number = "789",
                     Complement = "Casa 2",
-                    Grade = "1st Grade",
+                    Grade = "1º ano",
                     FatherName = "Marcos Oliveira",
                     MotherName = "Sandra Oliveira"
                 },
@@ -83,7 +83,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "04538-132",
                     Number = "2500",
                     Complement = "Conjunto 301",
-                    Grade = "2nd Grade",
+                    Grade = "2º ano",
                     FatherName = "Paulo Rodrigues",
                     MotherName = "Cristina Rodrigues"
                 },
@@ -97,7 +97,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01426-001",
                     Number = "567",
                     Complement = "Apto 12",
-                    Grade = "3rd Grade",
+                    Grade = "3º ano",
                     FatherName = "Ricardo Ferreira",
                     MotherName = "Lucia Ferreira"
                 },
@@ -111,7 +111,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01414-000",
                     Number = "890",
                     Complement = "Casa 5",
-                    Grade = "4th Grade",
+                    Grade = "4º ano",
                     FatherName = "Fernando Almeida",
                     MotherName = "Beatriz Almeida"
                 },
@@ -125,7 +125,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "05402-000",
                     Number = "1200",
                     Complement = "Sala 15",
-                    Grade = "5th Grade",
+                    Grade = "5º ano",
                     FatherName = "Eduardo Martins",
                     MotherName = "Camila Martins"
                 },
@@ -140,7 +140,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01415-000",
                     Number = "234",
                     Complement = "Apto 8",
-                    Grade = "6th Grade",
+                    Grade = "6º ano",
                     FatherName = "Gustavo Pereira",
                     MotherName = "Renata Pereira"
                 },
@@ -154,7 +154,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01302-000",
                     Number = "345",
                     Complement = "Casa 3",
-                    Grade = "7th Grade",
+                    Grade = "7º ano",
                     FatherName = "Andre Souza",
                     MotherName = "Monica Souza"
                 },
@@ -168,7 +168,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01317-000",
                     Number = "1800",
                     Complement = "Conjunto 205",
-                    Grade = "8th Grade",
+                    Grade = "8º ano",
                     FatherName = "Roberto Lima",
                     MotherName = "Silvia Lima"
                 },
@@ -182,7 +182,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01305-000",
                     Number = "456",
                     Complement = "Apto 22",
-                    Grade = "9th Grade",
+                    Grade = "9º ano",
                     FatherName = "Carlos Barbosa",
                     MotherName = "Ana Barbosa"
                 },
@@ -197,7 +197,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01426-001",
                     Number = "678",
                     Complement = "Casa 7",
-                    Grade = "10th Grade",
+                    Grade = "1º ano ensino médio",
                     FatherName = "Jose Cardoso",
                     MotherName = "Elena Cardoso"
                 },
@@ -211,7 +211,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01310-100",
                     Number = "2000",
                     Complement = "Sala 45",
-                    Grade = "11th Grade",
+                    Grade = "2º ano ensino médio",
                     FatherName = "Miguel Rocha",
                     MotherName = "Claudia Rocha"
                 },
@@ -225,7 +225,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01234-567",
                     Number = "901",
                     Complement = "Apto 33",
-                    Grade = "12th Grade",
+                    Grade = "3º ano ensino médio",
                     FatherName = "Pedro Nunes",
                     MotherName = "Teresa Nunes"
                 },
@@ -240,7 +240,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01414-000",
                     Number = "123",
                     Complement = "Casa 1",
-                    Grade = "3rd Grade",
+                    Grade = "3º ano",
                     FatherName = "Fabio Gomes",
                     MotherName = "Juliana Gomes"
                 },
@@ -254,7 +254,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "04538-132",
                     Number = "3000",
                     Complement = "Conjunto 401",
-                    Grade = "4th Grade",
+                    Grade = "4º ano",
                     FatherName = "Leonardo Castro",
                     MotherName = "Vanessa Castro"
                 },
@@ -269,7 +269,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01302-000",
                     Number = "567",
                     Complement = "Apto 15",
-                    Grade = "7th Grade",
+                    Grade = "7º ano",
                     FatherName = "Alexandre Ribeiro",
                     MotherName = "Carla Ribeiro"
                 },
@@ -283,7 +283,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "01415-000",
                     Number = "234",
                     Complement = "Casa 4",
-                    Grade = "8th Grade",
+                    Grade = "8º ano",
                     FatherName = "Rodrigo Dias",
                     MotherName = "Adriana Dias"
                 },
@@ -298,7 +298,7 @@ namespace PositiveStudentManagement.Scripts
                     ZipCode = "05402-000",
                     Number = "1500",
                     Complement = "Sala 25",
-                    Grade = "11th Grade",
+                    Grade = "2º ano ensino médio",
                     FatherName = "Bruno Mendes",
                     MotherName = "Leticia Mendes"
                 }
