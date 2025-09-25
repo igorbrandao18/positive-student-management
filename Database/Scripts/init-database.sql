@@ -1,11 +1,9 @@
--- Create database
 CREATE DATABASE PositiveStudentManagement;
 GO
 
 USE PositiveStudentManagement;
 GO
 
--- Create Students table
 CREATE TABLE Students (
     Id int IDENTITY(1,1) PRIMARY KEY,
     StudentId nvarchar(50) NOT NULL,
@@ -23,7 +21,6 @@ CREATE TABLE Students (
 );
 GO
 
--- Insert sample data
 INSERT INTO Students (StudentId, FullName, DateOfBirth, AddressType, Street, ZipCode, Number, Complement, Grade, EducationLevel, FatherName, MotherName) VALUES
 ('STU000001', 'John Smith', '2010-05-15', 1, 'Main Street', '12345-678', '123', 'Apt 4B', '6th Grade', 'Middle School', 'Robert Smith', 'Mary Smith'),
 ('STU000002', 'Emily Johnson', '2012-03-22', 2, 'Oak Avenue', '23456-789', '456', NULL, '4th Grade', 'Elementary School', 'David Johnson', 'Sarah Johnson'),
@@ -37,7 +34,6 @@ INSERT INTO Students (StudentId, FullName, DateOfBirth, AddressType, Street, Zip
 ('STU000010', 'Patricia Rodriguez', '2017-06-14', 2, 'Ash Avenue', '01234-567', '741', NULL, 'G3', 'Early Childhood', 'Steven Rodriguez', 'Helen Rodriguez');
 GO
 
--- Create indexes for better performance
 CREATE INDEX IX_Students_StudentId ON Students(StudentId);
 CREATE INDEX IX_Students_Grade ON Students(Grade);
 CREATE INDEX IX_Students_EducationLevel ON Students(EducationLevel);

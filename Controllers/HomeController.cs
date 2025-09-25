@@ -31,7 +31,6 @@ namespace PositiveStudentManagement.Controllers
         {
             try
             {
-                // This is a simple way to seed data - in production you'd want a more secure approach
                 await PositiveStudentManagement.Scripts.SeedStudents.SeedDataAsync(HttpContext.RequestServices.GetRequiredService<ApplicationDbContext>());
                 TempData["SuccessMessage"] = "Students seeded successfully!";
             }

@@ -42,7 +42,6 @@ namespace PositiveStudentManagement.Services
 
         public async Task<Student> CreateStudentAsync(Student student)
         {
-            // Generate Registration Number
             var lastStudent = await _context.Students.OrderByDescending(s => s.Id).FirstOrDefaultAsync();
             int nextId = (lastStudent?.Id ?? 0) + 1;
             student.StudentId = $"STU{nextId:D7}";
@@ -50,7 +49,6 @@ namespace PositiveStudentManagement.Services
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
             
-            // Clear cache after creating new student
             await _cacheService.RemoveAsync("students_all");
             await _cacheService.RemoveByPatternAsync("students_reports_*");
             

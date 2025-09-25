@@ -16,7 +16,6 @@ namespace PositiveStudentManagement.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure Students table
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.ToTable("Students");

@@ -53,7 +53,6 @@
 </form>
 
 <style>
-/* Confirmation Section */
 .confirmation-section {
     padding: var(--space-20) 0;
     background: rgba(255, 255, 255, 0.5);
@@ -235,7 +234,6 @@
     50% { transform: scale(1.05); }
 }
 
-/* Responsive Design */
 @@media (max-width: 768px) {
     .confirmation-container {
         margin: 0 var(--space-4);
@@ -284,13 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteBtn.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Show confirmation dialog
         if (confirm('Are you absolutely sure you want to delete this student? This action cannot be undone.')) {
-            // Show loading state
             deleteBtn.innerHTML = '<span>⏳</span> Deleting...';
             deleteBtn.disabled = true;
             
-            // Submit form
             form.submit();
         }
     });

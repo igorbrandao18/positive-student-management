@@ -39,7 +39,6 @@ namespace PositiveStudentManagement.Services
                 SlidingExpiration = TimeSpan.FromMinutes(5)
             };
 
-            // Serialize complex objects to JSON
             if (value != null && !IsSimpleType(typeof(T)))
             {
                 var jsonString = JsonSerializer.Serialize(value);
@@ -60,9 +59,6 @@ namespace PositiveStudentManagement.Services
         public async Task RemoveByPatternAsync(string pattern)
         {
             await Task.CompletedTask;
-            // Note: MemoryCache doesn't support pattern removal natively
-            // In a real application, you'd use Redis or implement a custom solution
-            // For now, we'll log this limitation
         }
 
         public async Task<bool> ExistsAsync(string key)

@@ -17,10 +17,8 @@ namespace PositiveStudentManagement.Services
         {
             try
             {
-                // Test database connection
                 await _context.Database.CanConnectAsync(cancellationToken);
                 
-                // Test a simple query
                 var studentCount = await _context.Students.CountAsync(cancellationToken);
                 
                 return HealthCheckResult.Healthy($"Database is healthy. Total students: {studentCount}");
@@ -38,7 +36,6 @@ namespace PositiveStudentManagement.Services
         {
             try
             {
-                // Check if application is responsive
                 var memoryUsage = GC.GetTotalMemory(false);
                 var memoryUsageMB = memoryUsage / 1024 / 1024;
                 

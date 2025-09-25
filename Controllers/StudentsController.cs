@@ -16,13 +16,11 @@ namespace PositiveStudentManagement.Controllers
             _studentService = studentService;
         }
 
-        // GET: Students
         public async Task<IActionResult> Index()
         {
             return View(await _studentService.GetAllStudentsAsync());
         }
 
-        // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,20 +37,17 @@ namespace PositiveStudentManagement.Controllers
             return View(student);
         }
 
-        // GET: Students/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FullName,DateOfBirth,AddressType,Street,ZipCode,Number,Complement,Grade,FatherName,MotherName")] Student student)
         {
             if (ModelState.IsValid)
             {
-                // Validate age vs grade
                 if (!await _studentService.ValidateAgeGradeAsync(student))
                 {
                     ModelState.AddModelError("Grade", $"The student's age ({student.Age} years) does not match the selected grade.");
@@ -65,7 +60,6 @@ namespace PositiveStudentManagement.Controllers
             return View(student);
         }
 
-        // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +75,6 @@ namespace PositiveStudentManagement.Controllers
             return View(student);
         }
 
-        // POST: Students/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,StudentId,FullName,DateOfBirth,AddressType,Street,ZipCode,Number,Complement,Grade,FatherName,MotherName")] Student student)
@@ -95,7 +88,6 @@ namespace PositiveStudentManagement.Controllers
             {
                 try
                 {
-                    // Validate age vs grade
                     if (!await _studentService.ValidateAgeGradeAsync(student))
                     {
                         ModelState.AddModelError("Grade", $"The student's age ({student.Age} years) does not match the selected grade.");
@@ -120,7 +112,6 @@ namespace PositiveStudentManagement.Controllers
             return View(student);
         }
 
-        // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,7 +128,6 @@ namespace PositiveStudentManagement.Controllers
             return View(student);
         }
 
-        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -151,7 +141,6 @@ namespace PositiveStudentManagement.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Students/Reports
         public async Task<IActionResult> Reports()
         {
             var reports = new ReportsViewModel

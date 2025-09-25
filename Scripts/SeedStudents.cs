@@ -8,7 +8,6 @@ namespace PositiveStudentManagement.Scripts
     {
         public static async Task SeedDataAsync(ApplicationDbContext context)
         {
-            // Check if students already exist
             if (await context.Students.AnyAsync())
             {
                 Console.WriteLine("Students already exist in the database.");
@@ -17,7 +16,6 @@ namespace PositiveStudentManagement.Scripts
 
             var students = new List<Student>
             {
-                // Early Childhood Students (G1-G3)
                 new Student
                 {
                     StudentId = "STU0000001",
@@ -61,7 +59,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Fernanda Costa"
                 },
 
-                // Elementary School Students (1st-5th Grade)
                 new Student
                 {
                     StudentId = "STU0000004",
@@ -133,7 +130,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Camila Martins"
                 },
 
-                // Middle School Students (6th-9th Grade)
                 new Student
                 {
                     StudentId = "STU0000009",
@@ -191,7 +187,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Ana Barbosa"
                 },
 
-                // High School Students (10th-12th Grade)
                 new Student
                 {
                     StudentId = "STU0000013",
@@ -235,7 +230,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Teresa Nunes"
                 },
 
-                // Additional Elementary Students
                 new Student
                 {
                     StudentId = "STU0000016",
@@ -265,7 +259,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Vanessa Castro"
                 },
 
-                // Additional Middle School Students
                 new Student
                 {
                     StudentId = "STU0000018",
@@ -295,7 +288,6 @@ namespace PositiveStudentManagement.Scripts
                     MotherName = "Adriana Dias"
                 },
 
-                // Additional High School Student
                 new Student
                 {
                     StudentId = "STU0000020",
@@ -312,13 +304,11 @@ namespace PositiveStudentManagement.Scripts
                 }
             };
 
-            // Calculate education levels for all students
             foreach (var student in students)
             {
                 student.CalculateEducationLevel();
             }
 
-            // Add students to context
             await context.Students.AddRangeAsync(students);
             await context.SaveChangesAsync();
 

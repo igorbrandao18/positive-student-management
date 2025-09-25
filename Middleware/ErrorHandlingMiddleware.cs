@@ -21,7 +21,6 @@ namespace PositiveStudentManagement.Middleware
             }
             catch (Exception ex)
             {
-                // Log error using built-in logger
                 var logger = context.RequestServices.GetRequiredService<ILogger<ErrorHandlingMiddleware>>();
                 logger.LogError(ex, "An unhandled exception occurred");
                 await HandleExceptionAsync(context, ex);
